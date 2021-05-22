@@ -1,0 +1,42 @@
+<mat-toolbar color="white">
+  <mat-toolbar-row>
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="secondary">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+<div class="text-center"><img src="../../assets/Banner.png"></div>  
+
+  </mat-toolbar-row>
+
+</mat-toolbar>
+<mat-sidenav-container class="example-container">
+ <mat-sidenav #drawer mode="side">
+
+    <mat-nav-list>
+    <mat-list-item> 
+<h3 mat-line><b>{{currentusername}} - {{currentusergroup}}</b></h3>      
+          
+ </mat-list-item> 
+      <mat-list-item *ngIf="currentusergroup=='Customer'">	
+      <mat-icon matListIcon>business_centre</mat-icon>		
+      <a routerLink='/premiumpayment' routerLinkActive="active-list-item"><h5 mat-line>Premium Payment</h5></a>
+    </mat-list-item>	
+      <mat-list-item *ngIf="currentusergroup=='Admin'"> 
+      <mat-icon matListIcon>business_centre</mat-icon>    
+      <a routerLink='/approvemoderator' routerLinkActive="active-list-item"><h5 mat-line>Approve Moderator</h5></a>
+    </mat-list-item>  
+      <mat-list-item *ngIf="currentusergroup=='Moderator'"> 
+      <mat-icon matListIcon>business_centre</mat-icon>    
+      <a routerLink='/approvecustomer' routerLinkActive="active-list-item"><h5 mat-line>Approve Customer</h5></a>
+    </mat-list-item>  
+
+      <mat-list-item>	
+      <mat-icon matListIcon>settings_power</mat-icon>	      	
+      <a routerLink='' (click)="logout()"><h5 mat-line>Log Out</h5></a>
+    </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
